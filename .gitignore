@@ -3,9 +3,12 @@ public class Info {
 	private double tuition;
 	private String name;
 	private int students;
+	private int teachers;
+	private int averageClassSize;
 	private double gpa;
 	private double acceptenceRate;
-	private int actScore
+	private int actScore;
+	private int satScore;
 		public static void main(String[] args) {
 	
 	}
