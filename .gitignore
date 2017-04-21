@@ -1,12 +1,156 @@
-*.class
+import java.awt.event.*;
+import java.util.ArrayList;
+import javax.swing.*;
 
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
+public class Info implements ActionListener {
+	
+	private String name;
+	private double tuition;
+	private int students;
+	private int teachers;
+	private int averageClassSize;
+	private double gpa;
+	private double acceptanceRate;
+	private int satScore;
+	private int actScore;
+	
+	public Info(String name) {
+		this.name = name;
+	}
+	
+	public String getName() {
+		return this.name;
+	}
+	
+	public double getTuition() {
+		return this.tuition;
+	}
+	
+	public int getStudents() {
+		return this.students;
+	}
+	
+	public int getTeachers() {
+		return this.teachers;
+	}
+	
+	public int getAverageClassSize() {
+		return this.averageClassSize;
+	}
+	
+	public double getGPA() {
+		return this.gpa;
+	}
+	
+	public double getAcceptanceRate() {
+		return this.acceptanceRate;
+	}
+	
+	public int getSATScore() {
+		return this.satScore;
+	}
+	
+	public int getACTScore() {
+		return this.actScore;
+	}
+	
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public void setTuition(double tuition) {
+		this.tuition = tuition;
+	}
+	
+	public void setStudents(int students) {
+		this.students = students;
+	}
+	
+	public void setTeachers(int teachers) {
+		this.teachers = teachers;
+	}
+	
+	public void setAverageClassSize(int size) {
+		this.averageClassSize = size;
+	}
+	
+	public void setGPA (double gpa) {
+		this.gpa = gpa;
+	}
+	
+	public void setAcceptanceRate(double acceptanceRate) {
+		this.acceptanceRate = acceptanceRate;
+	}
+	
+	public void setSATScore(int score) {
+		this.satScore = score;
+	}
+	
+	public void setACTScore(int score) {
+		this.actScore = score;
+	}
+	
+	@Override
+	public String toString() {
+		return this.name;
+	}
 
-# Package Files #
-*.jar
-*.war
-*.ear
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		//Create colleges and add to list
+		ArrayList<Info> collegeList = new ArrayList<Info>();
+		Info college1 = new Info("college2");
+		Info college2 = new Info("college1");
+		Info college3 = new Info("college4");
+		Info college4 = new Info("college3");
+		collegeList.add(college1);
+		collegeList.add(college2);
+		collegeList.add(college3);
+		collegeList.add(college4);
+		
+		/*for (int i = 0; i < 4; i++) {
+			System.out.println(collegeList.get(i));
+		}*/
+		//Sort the list by name
+		insertionSort(collegeList);
+		/*for (int i = 0; i < 4; i++) {
+			System.out.println(collegeList.get(i));
+		}*/
+		
+		JFrame frame = new JFrame("College Information");
+		frame.setLayout(null);
+		frame.setSize(400, 400);
+		frame.setLocationRelativeTo(null);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		String[] example = {"1","2","3","4"};
+		JComboBox<String> box = new JComboBox<String>(example);
+		box.setBounds(50,50,90,20);
+		frame.add(box);
+		
+		frame.setVisible(true);
+		}
+	
+	
+	//Sorting algorithm to sort colleges alphabetically
+	public static void insertionSort(ArrayList<Info> list){
+		for(int index = 1; index < list.size(); index++){
+			Info key = list.get(index);
+			int position = index;
+			
+			//shift larger values to the right
+			while(position > 0 && (list.get(position-1).getName()).compareTo(key.getName()) > 0){
+				list.set(position, list.get(position-1));
+				position--;
+			}
+			list.set(position, key);
+		}
+	}
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}
